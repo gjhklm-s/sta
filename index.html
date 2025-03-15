@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auction System</title>
+ 
+<style>
+
+       body {
+	        width: 100%;
+    padding: 0rem;
+    background: linear-gradient(to right, #fca2ae, #fdfd40);
+   /* background: rgb(208, 232, 180);*/
+    margin: 0rem auto;
+    max-width: 10000px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+text-align: center;
+    
+	  
+           
+        }
+        #teamsContainer div {
+    display: block !important;
+}
+
+
+		#hello {
+    
+    
+    background: linear-gradient(to right, #75edc1, #b4da42);
+    color: #2F4F4F;
+    padding: 2rem;
+    border-radius: 10px;
+    display: block;
+    width: 80%; /* Keep it within the main section */
+    margin: 1rem auto; /* Centers the section */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border: 3px solid #000; /* Adds a solid black border */
+}
+
+
+
+
+		header {
+	         background-image: url('h.png');
+		
+             background-color: #FF8C00;
+            color:#2F4F4F;
+            padding: 4rem;
+            text-align: center;
+        }
+        footer {
+    background-image: url('he.png'); /* Change 'footer.png' to your image */
+    
+    background-position: center;
+    background-color: #FF8C00;
+    color: #2F4F4F;
+    padding: 4rem;
+    text-align: center;
+}
+       
+        table {
+            width: 100%;
+            
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+			border-color:#1E90FF ;
+            padding: 10px;
+            text-align: center;
+		justify-content: center;
+			background-color:#F0FFF0;
+			color:black;
+        }
+        th {
+            background-color: green;
+            color:white ;
+        }
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            
+			
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+            
+		 h1 {
+            font-size: 2rem;
+            color:#B22222;
+            overflow: hidden;
+            border-right: .2em solid #ffffff;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .2em;
+            animation: typing 3s steps(30, end), blink .5s step-end infinite alternate;
+        }
+		@keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink {
+            from { border-color: transparent }
+            to { border-color: white; }
+        }
+        /* Ensure main is centered */
+
+
+/* Styling for auction box */
+.auction-box {
+    background: linear-gradient(to right, #e8f389, #ea91e2);
+    color: #2F4F4F;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 80%;
+    margin: 1rem auto;
+    box-shadow: 0 0 10px rgba(216, 216, 6, 0.2);
+    text-align: center;
+    border: 3px solid #fe8409;
+    position: relative;
+    overflow: hidden;
+    height: 100px; /* Ensures the video stays within the box */
+}
+
+.scoring-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+     object-fit: fill;
+    z-index: 1;
+    opacity: 0.6;
+    animation: fadeIn 2s ease-in-out;
+
+} 
+ #playerImage {
+            display: none; /* Initially hidden */
+            width: 300px;
+            height: auto;
+        }
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 0.4; }
+}
+.scorin-video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: none; /* Hidden by default */
+}
+       
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+} 
+
+/* Auction Title */
+.auction-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000080;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+		
+		
+		h2{
+		color:#8B0000;
+        white-space: nowrap;
+		}
+		h3{
+		color:#FF00FF;
+		}
+    </style>
+</head>
+<body>
+ 
+    <header>
+
+    </header>
+    <main>
+         <div class="auction-box">
+            <div class="main-container">
+<video autoplay loop muted playsinline class="scoring-video">
+        <source src="csk.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+        <h1 class="auction-title">Auction 2.0</h1>
+       <a href="https://www.instagram.com/su.jin7301/?next=%2F" target="_blank">
+    <button class="auction-button"onmouseover="this.style.background='#800080';" 
+        onmouseout="this.style.background='#FF4500';"
+        style="
+            background:#FF4500; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px;
+            position: relative; 
+            border-radius: 5px; 
+            z-index: 2;
+            cursor: pointer;">Click me</button>
+</a>
+</div>
+    </div>  
+	<h2>Players List</h2>
+        <button onclick="showPlayers('Wicketkeepers')" onmouseover="this.style.background='#6B8E23';" 
+        onmouseout="this.style.background='blue';"
+        style="
+            background:blue; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer;">Wicketkeepers</button>
+        <button onclick="showPlayers('Openers')"onclick="removePlayer('${team}', ${index})" 
+        onmouseover="this.style.background='#6B8E23';" 
+        onmouseout="this.style.background='blue';"
+        style="
+            background:blue; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer;">Openers</button>
+        <button onclick="showPlayers('MiddleOrder')" onmouseover="this.style.background='#6B8E23';" 
+        onmouseout="this.style.background='blue';"
+        style="
+            background:blue; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer;">Middle Order</button>
+        <button onclick="showPlayers('AllRounders')" onmouseover="this.style.background='#6B8E23';" 
+        onmouseout="this.style.background='blue';"
+        style="
+            background:blue; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer;">All-Rounders</button>
+        <button onclick="showPlayers('Spinners')" onmouseover="this.style.background='#6B8E23';" 
+        onmouseout="this.style.background='blue';"
+        style="
+            background:blue; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer;">Spinners</button>
+        <button onclick="showPlayers('FastBowlers')" onmouseover="this.style.background='#6B8E23';" 
+        onmouseout="this.style.background='blue';"
+        style="
+            background:blue; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer;">Fast Bowlers</button>
+        <button onclick="showPlayers('ForeignPlayers')" onmouseover="this.style.background='#6B8E23';" 
+        onmouseout="this.style.background='blue';"
+        style="
+            background:blue; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer;">Foreign Players</button>
+        <button onclick="showPlayers('IndianPlayers')"onmouseover="this.style.background='#6B8E23';" 
+        onmouseout="this.style.background='blue';"
+        style="
+            background:blue; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer;"
+    >Indian Players</button>
+		
+
+        <div id="playersList"></div>
+        <br>
+        <h2>Unsold Players</h2>
+<table id="unsoldPlayersTable" border="1" style="width: 100%; text-align: center;">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<input type="text" id="unsoldPlayerName" placeholder="Enter Player Name" style="font-size: 18px; padding: 5px; width: 200px;">
+<button onclick="addUnsoldPlayer()" style="background:#FF4500; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 5px; cursor: pointer;">Add Unsold Player</button>
+		
+		<a id="hello">
+        <h2>Enter Auction Details</h2>
+		<label for="teamName">Select Team:</label>
+        <select id="teamName"style="font-size: 18px; padding: 5px; width: 200px;">
+            <option value="">Select User</option>
+            <option value="Sujin">Sujin</option>
+            <option value="Ajin">Ajin</option>
+            <option value="Abi">Abi</option>
+            <option value="Asoke">Asoke</option>
+            <option value="Kamal">Kamal</option>
+            <option value="Anish">Anish</option>
+            <option value="DD">DD</option>
+            <option value="Raja">Raja</option>
+            <option value="Aswath">Aswath</option>
+            <option value="Varshan">Varshan</option>
+            <option value="rrk">rrk</option>
+        </select>
+		
+        <button onclick="setTeam()"onmouseover="this.style.background='#663399';" 
+        onmouseout="this.style.background='#008000';"
+        style="
+            background:#008000; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer;"">Select User</button>
+		
+        <h3 id="selectedTeam"></h3>
+        <input type="text" id="playerName" placeholder="Enter Player Name"style="font-size: 18px; padding: 5px; width: 200px;"><br><br>
+        <input type="number" id="price" placeholder="Enter Price in Cr"style="font-size: 18px; padding: 5px; width: 200px;"><br>
+        <button onclick="addToAuction()"onmouseover="this.style.background='#663399';" 
+        onmouseout="this.style.background='#008000';"
+        style="
+            background:#008000; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer;">Add to Auction</button>
+            <video id="auctionVideo" class="scorin-video" autoplay muted playsinline style="display: none; width: 100%; height: auto;">
+        <source src="au.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <img id="playerImage" src="" alt="Player Image">
+		</a>
+        <h2>Users</h2>
+        <div id="teamsContainer"></div>
+		 <h2>THE END</h2>
+		<dl>
+		<li>Congratulations to all the participants for taking part in this exciting auction game! Your strategic bidding and team-building skills made the competition thrilling—well done! 🎉👏</li>
+		
+    </main>
+    <footer></footer>
+    <div id="auctionMessages" style="color: white; font-size: 1.5rem;"></div>
+
+    <script>
+
+         let unsoldPlayers = JSON.parse(localStorage.getItem("unsoldPlayers")) || [];
+    
+    function addUnsoldPlayer() {
+        const playerName = document.getElementById("unsoldPlayerName").value.trim();
+        if (!playerName) {
+            alert("Please enter a player name!");
+            return;
+        }
+        if (unsoldPlayers.includes(playerName)) {
+            alert("Player is already in the unsold list!");
+            return;
+        }
+        
+        unsoldPlayers.push(playerName);
+        localStorage.setItem("unsoldPlayers", JSON.stringify(unsoldPlayers));
+        updateUnsoldTable();
+        document.getElementById("unsoldPlayerName").value = "";
+    }
+    
+    function updateUnsoldTable() {
+        const tableBody = document.querySelector("#unsoldPlayersTable tbody");
+        tableBody.innerHTML = "";
+        
+        unsoldPlayers.forEach((player, index) => {
+            const row = `<tr>
+                <td>${player}</td>
+                <td><button onclick="removeUnsoldPlayer(${index})" style="background:red; color: white; border: none; padding: 5px 10px; font-size: 14px; border-radius: 5px; cursor: pointer;">Remove</button></td>
+            </tr>`;
+            tableBody.innerHTML += row;
+        });
+    }
+    
+    function removeUnsoldPlayer(index) {
+        unsoldPlayers.splice(index, 1);
+        localStorage.setItem("unsoldPlayers", JSON.stringify(unsoldPlayers));
+        updateUnsoldTable();
+    }
+    
+    window.addEventListener("load", updateUnsoldTable);
+	const playerPoints = {
+        "Jos Buttler":10, "Quinton De Kock":9, "Nicholas Pooran":10, "Rishab Pant":10, "Phil Salt":8,"Dhoni":10, "Ishan Kishan":8, "Jonny Bairstow":8, "Rahmanullah Gurbaz":7, "KL Rahul":8, "Jitesh Sharma":7, "Anuj Rawat":7, "Devon Conway":8, "Sanju Samson":8, "KS Bharat":7, "Shai Hope":6,
+        "Ruturaj Gaikwad":8,"Rohit":10, "Shubman Gill":8, "Abhishek Sharma":9, "Yashasvi Jaiswal":8, "Sai Sudharsan":8, "Faf du Plessis":8, "David Warner":8, "Kane Williamson":6, "Daryl Mitchell":6,"Mohammad Rizwan":6,
+        "David Miller":9,"virat":10, "Suryakumar Yadav":10, "Will Jacks":8, "Jake Fraser-McGurk":9, "Travis Head":10, "Shimron Hetmyer":8, "Tim David":8,"Kedar Jadhav ":6, "Heinrich Klaasen":10, "Tristan Stubbs":8, "Rovman Powell":6, "Rahul Tripathi":7, "Shivam Dube":8, "Deepak Hooda":6, "Shahrukh Khan":7, "Rinku Singh":8, "Manish Pandey":6, "Ajinkya Rahane":6, "Ayush Badoni":6, "Abdul Samad":6, "Tilak Verma":9, "Dhruv Jurel":7, "Riyan Parag":8, "Nitish Rana":6, "Rajat Patidar":8, "Abhinav Manohar":7, "Sameer Rizvi":6, "Shreyas Iyer":9, "Sarfaraz Khan":6, "Narayan Jagadeesan":6, "Prabhsimran Singh":7, "Shahbaz Ahmed":7, "Steve Smith":7, "Harry Brook":7, "Rilee Rossouw":6,
+        "Ben Stokes":7, "Sunil Narine":10, "Andre Russell":10, "Hardik Pandya":10, "Glenn Maxwell":9, "Marcus Stoinis":9, "Romario Shepherd":7, "Liam Livingstone":8, "Mitchell Marsh":6, "Cameron Green":7, "Ravindra Jadeja":8, "Rachin Ravindra":7, "Sam Curran":7, "Axar Patel":8, "Rahul Tewatia":8, "Washington Sundar":7, "Venkatesh Iyer":7, "Moeen Ali":7, "Mitchell Santner":8, "Krunal Pandya":8, "Nitish Reddy":9, "Jason Holder":6, "Mohammad Nabi":6, "Aiden Markram":7, "Glenn Phillips":7, "Vijay Shankar":7, "Shakib Al Hasan":6, "Kyle Mayers":7,
+        "Rashid Khan":10, "Ravichandran Ashwin":10, "Noor Ahmad":9, "Kuldeep Yadav":10, "Varun Chakravarthy":9, "Ravi Bishnoi":9, "Yuzvendra Chahal":10, "Rahul Chahar":8, "R. Sai Kishore":6, "Mayank Markande":6, "Maheesh Theekshana":7, "Wanindu Hasaranga":7, "Adam Zampa":6, "Shreyas Gopal":6, "Karn Sharma":7, "Krishnappa Gowtham":6, "Adil Rashid":6,
+        "Matheesha Pathirana":10, "Mitchell Starc":10, "Kagiso Rabada":9, "Anrich Nortje":9, "Trent Boult":10, "Jasprit Bumrah":10, "Arshdeep Singh":9, "Jofra Archer":9, "Bhuvneshwar Kumar":10, "Josh Hazlewood":9, "Mohammad Shami":9, "Mohammad Siraj":8, "T. Natarajan":8, "Naveen-ul-Haq":7, "Pat Cummins":10, "Marco Jansen":9, "Mohit Sharma":8, "Shardul Thakur":6, "Ishant Sharma":8, "Prasidh Krishna":7, "Umesh Yadav":7, "Umran Malik":6, "Avesh Khan":7, "Deepak Chahar":8, "Nathan Ellis":7, "Lockie Ferguson":6, "Sandeep Sharma":7, "Tushar Deshpande":9, "Nuwan Thushara":7, "Harshal Patel":8, "Khaleel Ahmed":7, "Alzarri Joseph":6, "Tim Southee":6, "Chris Jordan":6, "Gerald Coetzee":7, "Spencer Johnson":6,
+        "Tom Latham":6,"Sam Billings":6,"Reeza Hendricks":6,"Dwaine Pretorius":6,"Ish Sodhi":6,"Mark Wood":7,"Babar Azam":7,"Shaheen Afridi":7,"Chris Woakes":6,"Lungi Ngidi":7,"James Neesham":6,"Tom Curran":6,"Evin Lewis":7,"Jason Behrendorff":6,"Matthew Wade":6,"Jason Roy":6,
+        "Mayank Agarwal":8,"Devdutt Padikkal":7,"Kamlesh Nagarkoti":6,"Shivam Mavi":6,"Suyash Sharma":6,"Lalit Yadav":6,"Chetan Sakariya":7,"Harshit Rana":8,"Arjun Tendulkar":6,"Yash Dayal":8,"Sandeep Warrier":6,"Suyash Prabhudessai":6
+       
+    };
+  
+
+	const players = {
+            Wicketkeepers: ["Jos Buttler", "Quinton De Kock", "Nicholas Pooran", "Rishab Pant", "Phil Salt","Dhoni", "Ishan Kishan", "Jonny Bairstow", "Rahmanullah Gurbaz", "KL Rahul", "Jitesh Sharma", "Anuj Rawat", "Devon Conway", "Sanju Samson", "KS Bharat", "Shai Hope"],
+            Openers: ["Ruturaj Gaikwad","Rohit", { name: "Shubman Gill", image: "gill.png" }, "Abhishek Sharma", "Yashasvi Jaiswal", "Sai Sudharsan", "Faf du Plessis", "David Warner", "Kane Williamson", "Daryl Mitchell","Mohammad Rizwan"],
+            MiddleOrder: ["David Miller","virat", "Suryakumar Yadav", "Will Jacks", "Jake Fraser-McGurk", "Travis Head", "Shimron Hetmyer", "Tim David","Kedar Jadhav ", "Heinrich Klaasen", "Tristan Stubbs", "Rovman Powell", "Rahul Tripathi", "Shivam Dube", "Deepak Hooda", "Shahrukh Khan", "Rinku Singh", "Manish Pandey", "Ajinkya Rahane", "Ayush Badoni", "Abdul Samad", "Tilak Verma", "Dhruv Jurel", "Riyan Parag", "Nitish Rana", "Rajat Patidar", "Abhinav Manohar", "Sameer Rizvi", "Shreyas Iyer", "Sarfaraz Khan", "Narayan Jagadeesan", "Prabhsimran Singh", "Shahbaz Ahmed", "Steve Smith", "Harry Brook", "Rilee Rossouw"],
+            AllRounders: ["Ben Stokes", "Sunil Narine", "Andre Russell", "Hardik Pandya", "Glenn Maxwell", "Marcus Stoinis", "Romario Shepherd", "Liam Livingstone", "Mitchell Marsh", "Cameron Green", "Ravindra Jadeja", "Rachin Ravindra", "Sam Curran", "Axar Patel", "Rahul Tewatia", "Washington Sundar", "Venkatesh Iyer", "Moeen Ali", "Mitchell Santner", "Krunal Pandya", "Nitish Reddy", "Jason Holder", "Mohammad Nabi", "Aiden Markram", "Glenn Phillips", "Vijay Shankar", "Shakib Al Hasan", "Kyle Mayers"],
+            Spinners: ["Rashid Khan", "Ravichandran Ashwin", "Noor Ahmad", "Kuldeep Yadav", "Varun Chakravarthy", "Ravi Bishnoi", "Yuzvendra Chahal", "Rahul Chahar", "R. Sai Kishore", "Mayank Markande", "Maheesh Theekshana", "Wanindu Hasaranga", "Adam Zampa", "Shreyas Gopal", "Karn Sharma", "Krishnappa Gowtham", "Adil Rashid"],
+            FastBowlers: ["Matheesha Pathirana", "Mitchell Starc", "Kagiso Rabada", "Anrich Nortje", "Trent Boult", "Jasprit Bumrah", "Arshdeep Singh", "Jofra Archer", "Bhuvneshwar Kumar", "Josh Hazlewood", "Mohammad Shami", "Mohammad Siraj", "T. Natarajan", "Naveen-ul-Haq", "Pat Cummins", "Marco Jansen", "Mohit Sharma", "Shardul Thakur", "Ishant Sharma", "Prasidh Krishna", "Umesh Yadav", "Umran Malik", "Avesh Khan", "Deepak Chahar", "Nathan Ellis", "Lockie Ferguson", "Sandeep Sharma", "Tushar Deshpande", "Nuwan Thushara", "Harshal Patel", "Khaleel Ahmed", "Alzarri Joseph", "Tim Southee", "Chris Jordan", "Gerald Coetzee", "Spencer Johnson"],
+        ForeignPlayers:["Tom Latham","Sam Billings","Reeza Hendricks","Dwaine Pretorius","Ish Sodhi","Mark Wood","Babar Azam","Shaheen Afridi","Chris Woakes","Lungi Ngidi","James Neesham","Tom Curran","Evin Lewis","Jason Behrendorff","Matthew Wade","Jason Roy"],
+        IndianPlayers:["Mayank Agarwal","Devdutt Padikkal","Kamlesh Nagarkoti","Shivam Mavi","Suyash Sharma","Lalit Yadav","Chetan Sakariya","Harshit Rana","Arjun Tendulkar","Yash Dayal","Sandeep Warrier","Suyash Prabhudessai"]
+		};
+		function showPlayers(category) {
+            document.getElementById("playersList").innerHTML =  `<h2>${category.replace(/([A-Z])/g, ' $1')}</h2><ol>` + players[category].map(player => `<li>${player}</li>`).join('') + `</ol>`;
+        }
+        
+        
+        let teams = JSON.parse(localStorage.getItem("teams")) || {
+            "Sujin": { players: [], totalSpent: 0, remainingBudget: 150 },
+            "Ajin": { players: [], totalSpent: 0, remainingBudget: 150 },
+            "Abi": { players: [], totalSpent: 0, remainingBudget: 150 },
+            "Asoke": { players: [], totalSpent: 0, remainingBudget: 150 },
+            "Kamal": { players: [], totalSpent: 0, remainingBudget: 150 },
+            "Anish": { players: [], totalSpent: 0, remainingBudget: 150 },
+            "DD": { players: [], totalSpent: 0, remainingBudget: 150 },
+            "Raja": { players: [], totalSpent: 0, remainingBudget: 150 },
+            "Aswath": { players: [], totalSpent: 0, remainingBudget: 150 },
+            "Varshan": { players: [], totalSpent: 0, remainingBudget: 150 },
+             "rrk": { players: [], totalSpent: 0, remainingBudget: 150 },
+        };
+        let currentCategory = "";
+    let currentIndex = 0;
+
+ // Track current player
+
+document.getElementById("nextPlayerBtn").addEventListener("click", function () {
+    let player = players[currentCategory][currentIndex];  // Get current player
+
+    if (player) {
+        // Display player name
+        document.getElementById("playerDisplay").innerHTML = `Player ${currentIndex + 1}: <b>${player.name}</b>`;
+
+        // Display player image
+        let imgElement = document.getElementById("playerImage");
+        imgElement.src = player.image;
+        imgElement.style.display = "block";
+
+        // Show for 10 seconds, then hide and show alert
+        setTimeout(() => {
+            imgElement.style.display = "none";
+            alert(`Next player is ${player.name}`);
+
+            // Move to the next player (loop back to the start if at the end)
+            currentIndex = (currentIndex + 1) % players[currentCategory].length;
+        }, 10000);
+    } else {
+        console.error("Invalid player object:", player);
+    }
+});
+
+
+    function showPlayers(category) {
+        currentCategory = category;
+        currentIndex = 0;
+        displayPlayer();
+    }
+
+   function displayPlayer() {
+    const playerList = players[currentCategory];
+
+    if (!playerList || playerList.length === 0) {
+        document.getElementById("playersList").innerHTML = "<h2>No players available</h2>";
+        return;
+    }
+
+    const player = playerList[currentIndex];
+    let playerName = typeof player === "object" ? player.name : player;
+    let playerImage = typeof player === "object" && player.image ? player.image : "";
+
+    document.getElementById("playersList").innerHTML = `
+        <h2>${currentCategory.replace(/([A-Z])/g, ' $1')}</h2>
+        <p><strong>Player ${currentIndex + 1}:</strong> ${playerName}</p>
+       
+        
+        <button onclick="prevPlayer()" onmouseover="this.style.background='grey';" onmouseout="this.style.background='red';" style="
+            background: red; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer;">
+            Previous Player
+        </button>
+        
+        <button onclick="nextPlayer()" onmouseover="this.style.background='grey';" onmouseout="this.style.background='red';" style="
+            background: red; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer;">
+            Next Player
+        </button>
+    `;
+}
+
+function nextPlayer() {
+    if (!players[currentCategory] || players[currentCategory].length === 0) return;
+    currentIndex = (currentIndex + 1) % players[currentCategory].length;
+    displayPlayer();
+    showImageAlert(); // Automatically show the image popup
+}
+
+function prevPlayer() {
+    if (!players[currentCategory] || players[currentCategory].length === 0) return;
+    currentIndex = (currentIndex - 1 + players[currentCategory].length) % players[currentCategory].length;
+    displayPlayer();
+}
+
+function showImageAlert() {
+    const player = players[currentCategory][currentIndex];
+
+    if (typeof player === "object" && player.image) {
+        // Remove existing alert if already open
+        const existingAlert = document.getElementById("imageAlert");
+        if (existingAlert) {
+            existingAlert.remove();
+        }
+
+        // Create a new image alert
+        const imgAlert = `
+            <div id="imageAlert" style="
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0.8); display: flex; 
+                justify-content: center; align-items: center; 
+                z-index: 1000; padding: 20px; box-sizing: border-box;
+            ">
+                <div style="
+                    background: white; padding: 10px; width: 90%; 
+                    max-width: 500px; text-align: center; 
+                    border-radius: 10px; box-shadow: 0px 0px 15px black;
+                ">
+                    <p style="font-size: 22px; font-weight: bold; margin-bottom: 10px;">
+                        ${player.name}
+                    </p>
+                    <img src="${player.image}" style="
+                        width: 100%; height: auto; border-radius: 8px; 
+                        max-height: 80vh; object-fit: contain;
+                    ">
+                <br>
+                <button onclick="document.getElementById('imageAlert').remove()" style="
+                    background: red; 
+                    color: white; 
+                    border: none; 
+                    padding: 5px 10px; 
+                    margin-top: 10px; 
+                    font-size: 14px; 
+                    cursor: pointer;">
+                    Close
+                </button>
+            </div>
+        `;
+        document.body.insertAdjacentHTML("beforeend", imgAlert);
+    } else {
+        alert("No image available for this player.");
+    }
+}
+
+        let totalBudget = 150;
+        let playerLimit = 20;
+        
+        function setTeam() {
+            const selectedTeam = document.getElementById("teamName").value;
+            if (!selectedTeam) {
+                alert("Please select a user!");
+                return;
+            }
+            document.getElementById("selectedTeam").textContent = "Selected User: " + selectedTeam;
+        }
+        
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                let speech = new SpeechSynthesisUtterance(text);
+                speech.lang = 'en-US';
+                speech.volume = 1;
+                speech.rate = 1;
+                speech.pitch = 1;
+                window.speechSynthesis.speak(speech);
+            }
+        }
+// ✅ Initialize teams object if not defined
+ function addToAuction() {
+    const selectedTeam = document.getElementById("teamName").value;
+    const player = document.getElementById("playerName").value;
+    let price = parseFloat(document.getElementById("price").value);
+     let auctionVideo = document.getElementById("auctionVideo");
+
+    console.log("Add to Auction clicked!"); 
+
+    if (!selectedTeam || !player || isNaN(price) || price <= 0) {
+        alert("Please enter valid details!");
+        speakText("Please enter valid details!");
+        return;
+    }
+
+    console.log("Displaying video..."); // Debugging
+
+    // Show the video and play from the start
+    auctionVideo.style.display = "block";
+    auctionVideo.currentTime = 0;
+    auctionVideo.play();
+
+    // Hide the video after 5 seconds
+    setTimeout(() => {
+        console.log("Hiding video..."); // Debugging
+        auctionVideo.style.display = "none";
+    }, 15000);
+
+    // ✅ Prevent Duplicate Player
+    for (let team in teams) {
+        if (teams[team]?.players?.some(p => p.player === player)) {
+            alert(`Player "${player}" is already sold!`);
+             speakText(`Player "${player}" is already sold!`);
+            return;
+        }
+    }
+if (unsoldPlayers.includes(player)) {
+            alert(`Player "${player}" is in the unsold list and cannot be added to another table!`);
+            speakText(`Player ${player} is in the unsold list and cannot be added!`);
+            return;
+        }
+    // ✅ Ensure Team Exists
+    if (!teams[selectedTeam]) {
+        teams[selectedTeam] = { players: [], totalSpent: 0, remainingBudget: totalBudget };
+    }
+
+    // ✅ Ensure players array exists
+    if (!teams[selectedTeam].players) {
+        teams[selectedTeam].players = [];
+    }
+
+    // ✅ Player Limit Check
+    if (teams[selectedTeam].players.length >= playerLimit) {
+        alert("Player limit reached for this team!");
+        speakText("Player limit reached for " + selectedTeam);
+        return;
+    }
+
+    // ✅ Budget Check
+    if (teams[selectedTeam].totalSpent + price > totalBudget) {
+        alert("Budget Exceeded! You cannot spend more than ₹150 Cr.");
+        speakText("Budget Exceeded! You cannot spend more than 150 crore rupees.");
+        return;
+    }
+
+    let points = playerPoints[player] || 4;
+
+    // ✅ Add Player to Team
+    teams[selectedTeam].players.push({ player, price, points });
+    teams[selectedTeam].totalSpent += price;
+    teams[selectedTeam].remainingBudget = totalBudget - teams[selectedTeam].totalSpent;
+
+  
+
+    
+    let totalPoints = teams[selectedTeam].players.reduce((sum, p) => sum + (p.points || 0), 0);
+    let message = `${selectedTeam} bought ${player} for ${price} Crores.`;
+
+    if (price >= 0.5 && price <= 5) message += "\nIt's a steal buy!";
+    else if (price > 5 && price <= 10) message += "\nIt's an excellent buy!";
+    else if (price > 10 && price <= 15) message += "\nIt's a great buy!";
+    else if (price > 15 && price <= 20) message += "\nIt's a good buy!";
+    else if (price > 21) message += "\nOver Priced!";
+    message += `\nTotal Points: ${totalPoints}.`;
+
+    alert(message);
+    speakText(message);
+      // 🔥 Send Real-Time Message
+    
+
+    alert(`${selectedTeam} bought ${player} for ₹${price} Cr!`);
+}
+
+
+
+
+
+
+// ✅ Remove Player from Firebase
+
+
+
+
+
+</script>
+</body>
+</html>
